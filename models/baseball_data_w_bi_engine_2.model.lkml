@@ -33,8 +33,4 @@ explore: all_stats_entire_season {
     relationship: many_to_one
     sql_on: ${all_stats_entire_season.stint} = ${inf_stint.stint} ;;
   }
-  description: "This explore offers MLB player stats by year"
-  label: "MLB player stats by year"
-  group_label: "Major League Baseball Stats"
-  view_label: "Player Stats"
 }

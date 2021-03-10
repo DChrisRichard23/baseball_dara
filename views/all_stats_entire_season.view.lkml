@@ -7,9 +7,16 @@ view: all_stats_entire_season {
     sql: ${TABLE}.assists ;;
   }
 
-  dimension: at_bats {
+  dimension: at_bats_in {
+    hidden: yes
     type: number
     sql: ${TABLE}.at_bats ;;
+  }
+
+  measure: at_bats {
+    type: sum
+    sql: ${at_bats_in} ;;
+    value_format: "#,##0"
   }
 
   dimension: batters_faced_by_pitcher {
