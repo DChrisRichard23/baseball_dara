@@ -38,13 +38,3 @@ explore: all_stats_entire_season {
   group_label: "Major League Baseball Stats"
   view_label: "Player Stats"
 }
-
-explore: inf_player {}
-
-explore: inf_player_year {}
-
-explore: inf_stint {}
-
-explore: inf_team_year {}
-
-explore: team_year {}
