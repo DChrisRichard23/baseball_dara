@@ -5,7 +5,7 @@ include: "/views/**/*.view"
 
 datagroup: baseball_data_w_bi_engine_2_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
-  max_cache_age: "1 hour"
+  max_cache_age: "0 seconds"
 }
 
 persist_with: baseball_data_w_bi_engine_2_default_datagroup
