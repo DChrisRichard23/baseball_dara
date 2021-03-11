@@ -69,9 +69,16 @@ view: all_stats_entire_season {
     sql: ${TABLE}.errors ;;
   }
 
-  dimension: games_batting {
+  dimension: games_batting_in {
     type: number
+    hidden:  yes
     sql: ${TABLE}.games_batting ;;
+  }
+
+  measure: games_batting {
+    type: sum
+    sql: ${games_batting_in} ;;
+    value_format: "#,##0"
   }
 
   dimension: games_fielding {
@@ -129,9 +136,30 @@ view: all_stats_entire_season {
     sql: ${TABLE}.hits_allowed ;;
   }
 
-  dimension: homeruns {
+  dimension: homeruns_in {
+    hidden: yes
     type: number
     sql: ${TABLE}.homeruns ;;
+  }
+
+  measure: homeruns {
+    type: sum
+    sql: ${homeruns_in} ;;
+    value_format: "#,##0"
+  }
+
+
+
+  measure: homeruns_per_team {
+    type: number
+    sql: ${homeruns} / ${teams};;
+    value_format: "#,##0.0"
+  }
+
+  measure: homeruns_per_year {
+    type: number
+    sql: ${homeruns} / ${seasons};;
+    value_format: "#,##0.0"
   }
 
   dimension: homeruns_allowed {
@@ -279,6 +307,12 @@ view: all_stats_entire_season {
     sql: ${TABLE}.team_id ;;
   }
 
+  measure: teams {
+    type: count_distinct
+    sql: ${team_id} ;;
+    value_format: "#,##0"
+  }
+
   dimension: triples {
     type: number
     sql: ${TABLE}.triples ;;
@@ -307,6 +341,12 @@ view: all_stats_entire_season {
   dimension: year {
     type: number
     sql: ${TABLE}.year ;;
+  }
+
+  measure: seasons {
+    type: count_distinct
+    sql: ${year} ;;
+    value_format: "#,##0"
   }
 
   measure: count {
