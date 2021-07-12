@@ -11,6 +11,7 @@ datagroup: baseball_data_w_bi_engine_2_default_datagroup {
 persist_with: baseball_data_w_bi_engine_2_default_datagroup
 
 explore: all_stats_entire_season {
+  persist_for: "0 seconds"
   join: inf_player {
     type: left_outer
     relationship: many_to_one
