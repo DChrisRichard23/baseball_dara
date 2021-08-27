@@ -13,6 +13,7 @@ view: inf_stint {
   }
 
   dimension: stint {
+    primary_key: yes
     type: string
     sql: ${TABLE}.stint ;;
   }

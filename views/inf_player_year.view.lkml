@@ -47,6 +47,12 @@ view: inf_player_year {
     sql: ${TABLE}.year ;;
   }
 
+  dimension: player_year {
+    primary_key: yes
+    type: string
+    sql: ${player_id} || '-' || ${year} ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []

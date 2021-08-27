@@ -257,9 +257,15 @@ view: inf_team_year {
     sql: ${TABLE}.wildcard_win ;;
   }
 
-  dimension: wins {
+  dimension: wins_in {
+    hidden: yes
     type: number
     sql: ${TABLE}.wins ;;
+  }
+
+  measure: wins {
+    type: sum
+    sql: ${wins_in} ;;
   }
 
   dimension: world_series_win {
@@ -267,9 +273,20 @@ view: inf_team_year {
     sql: ${TABLE}.world_series_win ;;
   }
 
+  measure:  world_series_wins {
+    type: sum
+    sql: CASE WHEN ${world_series_win} IS TRUE THEN 1 ELSE 0 END ;;
+  }
+
   dimension: year {
     type: number
     sql: ${TABLE}.year ;;
+  }
+
+  dimension: team_year {
+    primary_key: yes
+    type: string
+    sql: ${team_id} || '-' || ${year} ;;
   }
 
   measure: count {
